@@ -1,0 +1,608 @@
+html.assurance-android,
+html.assurance-android body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html.assurance-android * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.assurance-android button,
+html.assurance-android input {
+  touch-action: manipulation;
+}
+
+html.assurance-android .terminal-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) clamp(132px, 22dvh, 180px);
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100svh;
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow: hidden;
+}
+
+html.assurance-android .terminal-shell::after {
+  right: 0;
+  bottom: env(safe-area-inset-bottom);
+}
+
+html.assurance-android .top-bar {
+  min-height: calc(42px + env(safe-area-inset-top));
+  padding: env(safe-area-inset-top) 8px 0 10px;
+  gap: 1px;
+}
+
+html.assurance-android .brand {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+html.assurance-android .top-status {
+  margin-left: 0;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+html.assurance-android .android-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+html.assurance-android .android-nav-toggle {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: #000000;
+  color: var(--text);
+}
+
+html.assurance-android .android-map-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  margin-right: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+html.assurance-android .android-map-toggle::before,
+html.assurance-android .android-map-toggle::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+html.assurance-android .android-map-toggle::before {
+  inset: 3px;
+  background: #6f6f6f;
+}
+
+html.assurance-android .android-map-toggle::after {
+  inset: 4px;
+  background: #111111;
+}
+
+html.assurance-android .android-map-toggle span {
+  position: relative;
+  z-index: 1;
+  color: #d8d8d8;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(0.5px);
+}
+
+html.assurance-android .android-nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 2px 0;
+  background: currentColor;
+}
+
+html.assurance-android .dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+}
+
+html.assurance-android .left-panel {
+  grid-row: 1;
+  border-right: 0;
+  border-bottom: 1px solid var(--line-panel);
+}
+
+html.assurance-android .left-panel .panel-title {
+  height: 18px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+html.assurance-android .left-panel .panel-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  max-height: 92px;
+  padding: 5px 10px 6px;
+  overflow: hidden;
+}
+
+html.assurance-android .left-panel .section {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+html.assurance-android .left-panel .section-heading {
+  margin-bottom: 4px;
+  padding-bottom: 3px;
+  font-size: 10px;
+  line-height: 1;
+}
+
+html.assurance-android .left-panel .section-heading[data-android-screen] {
+  cursor: pointer;
+}
+
+html.assurance-android .left-panel .kv-row,
+html.assurance-android .left-panel .queue-progress,
+html.assurance-android .left-panel .empty-line {
+  font-size: 9px;
+  line-height: 1.08;
+}
+
+html.assurance-android .left-panel .kv-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 5px;
+  padding: 1px 0;
+}
+
+html.assurance-android .left-panel .kv-row span:first-child,
+html.assurance-android .left-panel .queue-progress-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.assurance-android .left-panel .queue-progress {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  margin-bottom: 3px;
+}
+
+html.assurance-android .left-panel .queue-progress-meter {
+  grid-template-columns: 12px 16px 42px 34px;
+  gap: 3px;
+  font-size: 8px;
+}
+
+html.assurance-android .left-panel .progress-bar {
+  width: 42px;
+  height: 5px;
+}
+
+html.assurance-android .left-panel .queue-cancel-button,
+html.assurance-android .left-panel .queue-finish-button,
+html.assurance-android .left-panel .queue-finish-placeholder {
+  width: 12px;
+  height: 14px;
+  font-size: 10px;
+  line-height: 10px;
+}
+
+html.assurance-android .left-panel .debug-window {
+  display: none;
+}
+
+html.assurance-android .center-panel {
+  grid-row: 2;
+  min-height: 0;
+  border-right: 0;
+}
+
+html.assurance-android .center-panel .panel-title {
+  height: 24px;
+  font-size: 11px;
+}
+
+html.assurance-android .center-content {
+  min-height: 0;
+}
+
+html.assurance-android #hexMapCanvas {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+html.assurance-android .unit-selector-level-list {
+  transition: none;
+}
+
+html.assurance-android .map-unit-selector.available.closing .unit-selector-list {
+  animation: none;
+}
+
+html.assurance-android .center-content > .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #000000;
+}
+
+html.assurance-android #welcomeOverlay {
+  background: #000000;
+  z-index: 60;
+}
+
+html.assurance-android #welcomeOverlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  pointer-events: none;
+  border: 1px solid var(--green);
+}
+
+html.assurance-android .welcome-card {
+  width: min(360px, calc(100vw - 24px));
+  max-height: calc(100% - 24px);
+  padding: 22px 20px;
+  border: 0;
+}
+
+html.assurance-android .welcome-card h1 {
+  font-size: 30px;
+}
+
+html.assurance-android .welcome-panel {
+  min-height: 100%;
+}
+
+html.assurance-android .right-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  width: min(58vw, 214px);
+  padding-top: env(safe-area-inset-top);
+  border-left: 1px solid var(--line);
+  border-right: 0;
+  transform: translateX(100%);
+  transition: transform 160ms ease;
+}
+
+html.assurance-android.android-nav-open .right-panel {
+  transform: translateX(0);
+}
+
+html.assurance-android .right-panel .panel-content {
+  padding: 8px 10px calc(14px + env(safe-area-inset-bottom));
+}
+
+html.assurance-android .right-panel .panel-title {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 11px;
+}
+
+html.assurance-android .right-panel .nav-group {
+  margin-bottom: 12px;
+}
+
+html.assurance-android .right-panel .nav-heading {
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+
+html.assurance-android .right-panel .nav-button {
+  min-height: 32px;
+  padding: 0 8px;
+  font-size: 11px;
+}
+
+html.assurance-android .volume-control {
+  gap: 6px;
+}
+
+html.assurance-android .volume-toggle {
+  width: 38px;
+  height: 36px;
+}
+
+html.assurance-android .volume-icon {
+  left: 11px;
+}
+
+html.assurance-android .volume-control:hover .volume-popover {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.assurance-android .volume-control.android-volume-open .volume-popover,
+html.assurance-android .volume-control:focus-within .volume-popover {
+  width: 150px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+html.assurance-android .volume-popover {
+  grid-template-columns: 108px 30px;
+  gap: 8px;
+}
+
+html.assurance-android .volume-slider {
+  width: 108px;
+  height: 28px;
+}
+
+html.assurance-android .android-save-list {
+  display: grid;
+  gap: 6px;
+  width: min(280px, calc(100vw - 56px));
+  max-height: min(34dvh, 220px);
+  margin: 8px auto 0;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+html.assurance-android .android-save-list::-webkit-scrollbar {
+  display: none;
+}
+
+html.assurance-android .android-save-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  background: #000000;
+  color: var(--text);
+  text-align: left;
+}
+
+html.assurance-android .android-save-option span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+}
+
+html.assurance-android .android-save-option small,
+html.assurance-android .android-save-empty {
+  color: var(--dim);
+  font-size: 9px;
+}
+
+html.assurance-android .android-save-empty {
+  padding: 8px;
+  border: 1px solid var(--line-panel);
+  text-align: center;
+}
+
+html.assurance-android .android-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  display: none;
+  border: 0;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+html.assurance-android.android-nav-open .android-nav-backdrop {
+  display: block;
+}
+
+html.assurance-android .bottom-bar {
+  position: relative;
+  min-height: 0;
+}
+
+html.assurance-android .event-log {
+  padding: 8px 138px 8px 10px;
+}
+
+html.assurance-android .log-entry {
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 7px;
+  font-size: 10px;
+}
+
+html.assurance-android .end-turn-button {
+  position: fixed;
+  right: calc(10px + env(safe-area-inset-right));
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  width: 116px;
+  height: 38px;
+  z-index: 50;
+}
+
+html.assurance-android .map-selection {
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  max-height: min(25dvh, 178px);
+  padding: 6px 8px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+html.assurance-android .map-selection::-webkit-scrollbar {
+  display: none;
+}
+
+html.assurance-android .selection-title {
+  margin-bottom: 4px;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+html.assurance-android .compact-grid {
+  grid-template-columns: repeat(2, minmax(34px, auto) minmax(0, 1fr));
+  gap: 2px 7px;
+  font-size: 9px;
+  line-height: 1.12;
+}
+
+html.assurance-android .compact-grid span,
+html.assurance-android .compact-grid strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.assurance-android .tile-unit-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  margin-bottom: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+html.assurance-android .tile-unit-list::-webkit-scrollbar {
+  display: none;
+}
+
+html.assurance-android .map-selection .text-button {
+  min-height: 26px;
+  padding: 3px 4px;
+  font-size: 9px;
+  line-height: 1.12;
+}
+
+html.assurance-android .tile-unit-button {
+  flex: 0 0 auto;
+  max-width: min(72vw, 260px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.assurance-android .tile-unit-memory {
+  padding: 4px 5px;
+  font-size: 9px;
+}
+
+html.assurance-android .map-selection .purchase-currency-toggle {
+  position: static;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(54px, max-content));
+  gap: 4px;
+  margin: 5px 0 2px;
+  padding-top: 0;
+}
+
+html.assurance-android .map-selection .purchase-currency-button {
+  min-height: 24px;
+  min-width: 54px;
+  padding: 0 6px;
+  font-size: 9px;
+}
+
+html.assurance-android .map-selection .text-button.wide {
+  margin-bottom: 2px;
+  padding-left: 0;
+}
+
+html.assurance-android .map-selection .empty-line {
+  font-size: 9px;
+}
+
+html.assurance-android .modal-box {
+  width: min(220px, calc(100vw - 96px));
+  min-height: 58px;
+  padding: 12px 16px;
+}
+
+html.assurance-android .modal-box.loading {
+  width: min(150px, calc(100vw - 128px));
+  min-height: 44px;
+  padding: 8px 12px;
+}
+
+html.assurance-android .modal-box.victory,
+html.assurance-android .modal-box.defeat {
+  width: min(220px, calc(100vw - 96px));
+  min-height: 72px;
+  padding: 14px 18px;
+}
+
+html.assurance-android .modal-message {
+  font-size: 12px;
+  line-height: 1.28;
+}
+
+html.assurance-android .map-unit-selector {
+  left: 8px;
+  bottom: 8px;
+}
+
+html.assurance-android .text-button,
+html.assurance-android .nav-button,
+html.assurance-android .end-turn-button,
+html.assurance-android .purchase-currency-button,
+html.assurance-android .gain-buy-button {
+  min-height: 34px;
+}
+
+html.assurance-android .table-row {
+  grid-template-columns: minmax(96px, 1.15fr) minmax(92px, 1fr) minmax(56px, 0.6fr) minmax(50px, 0.5fr) minmax(70px, auto);
+}
+
+html.assurance-android .table-row > span {
+  padding: 6px;
+  font-size: 10px;
+}
+
+@media (max-width: 430px) {
+  html.assurance-android .terminal-shell {
+    grid-template-rows: auto minmax(0, 1fr) clamp(124px, 21dvh, 160px);
+  }
+
+  html.assurance-android .top-status {
+    display: none;
+  }
+
+  html.assurance-android .left-panel .panel-content {
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.95fr) minmax(0, 0.95fr);
+    max-height: 86px;
+    gap: 6px;
+    padding: 4px 8px 5px;
+  }
+}

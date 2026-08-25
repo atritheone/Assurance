@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./icon.ico" />
+    <title>Assurance</title>
+  </head>
+  <body>
+    <main id="app" class="terminal-shell">
+      <section id="welcomeOverlay" class="overlay" aria-label="Welcome">
+        <div class="welcome-card">
+          <p class="terminal-kicker">COMMAND SESSION</p>
+          <h1>Assurance</h1>
+          <div id="startOptions" class="start-options hidden" aria-label="New game options">
+            <div class="start-team-toggle" aria-label="Choose team">
+              <button id="startTeamEmpire" class="start-team-button empire active" type="button" data-start-team="Empire" aria-pressed="true">The Empire</button>
+              <button id="startTeamAlliance" class="start-team-button alliance" type="button" data-start-team="Alliance" aria-pressed="false">The Alliance</button>
+            </div>
+
+            <label class="start-field">
+              <span>Difficulty</span>
+              <select id="startDifficulty" class="start-select">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard" selected>Hard</option>
+              </select>
+            </label>
+
+            <label class="start-check">
+              <input id="useDefaultStart" type="checkbox" checked />
+              <span>Use default start</span>
+            </label>
+
+            <div id="customStartPanel" class="custom-start-panel hidden">
+              <div class="start-side-panel">
+                <div class="start-side-heading">Empire Start</div>
+                <div class="start-number-grid">
+                  <label class="start-field"><span>Funds</span><input id="playerStartFunds" class="start-input" type="number" min="0" step="1" /></label>
+                  <label class="start-field"><span>Income</span><input id="playerStartIncome" class="start-input" type="number" min="0" step="1" /></label>
+                  <label class="start-field"><span>Efficiency</span><input id="playerStartEfficiency" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Production Cap</span><input id="playerStartProductionCapacity" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Production Speed</span><input id="playerStartProductionSpeed" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Research Cap</span><input id="playerStartResearchCapacity" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Research Speed</span><input id="playerStartResearchSpeed" class="start-input" type="number" min="1" step="1" /></label>
+                </div>
+                <div class="start-check-grid">
+                  <label class="start-check"><input id="playerUnlockSpecialServices" type="checkbox" /><span>Unlock Special Services</span></label>
+                  <label class="start-check"><input id="playerUnlockRoom" type="checkbox" /><span>Unlock The Room</span></label>
+                </div>
+                <div id="playerStartUnits" class="start-unit-grid"></div>
+              </div>
+
+              <label class="start-check">
+                <input id="enemyStartsSame" type="checkbox" checked />
+                <span>Enemy uses default start</span>
+              </label>
+
+              <div id="enemyStartPanel" class="start-side-panel hidden">
+                <div class="start-side-heading">Alliance Start</div>
+                <div class="start-number-grid">
+                  <label class="start-field"><span>Funds</span><input id="enemyStartFunds" class="start-input" type="number" min="0" step="1" /></label>
+                  <label class="start-field"><span>Income</span><input id="enemyStartIncome" class="start-input" type="number" min="0" step="1" /></label>
+                  <label class="start-field"><span>Efficiency</span><input id="enemyStartEfficiency" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Production Cap</span><input id="enemyStartProductionCapacity" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Production Speed</span><input id="enemyStartProductionSpeed" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Research Cap</span><input id="enemyStartResearchCapacity" class="start-input" type="number" min="1" step="1" /></label>
+                  <label class="start-field"><span>Research Speed</span><input id="enemyStartResearchSpeed" class="start-input" type="number" min="1" step="1" /></label>
+                </div>
+                <div class="start-check-grid">
+                  <label class="start-check"><input id="enemyUnlockSpecialServices" type="checkbox" /><span>Unlock Special Services</span></label>
+                  <label class="start-check"><input id="enemyUnlockDroneFactory" type="checkbox" /><span>Unlock Drone Factory</span></label>
+                </div>
+                <div id="enemyStartUnits" class="start-unit-grid"></div>
+              </div>
+            </div>
+          </div>
+          <div id="welcomeMainActions" class="welcome-actions">
+            <button class="text-button wide" type="button" data-start="new">New Game</button>
+            <button class="text-button wide" type="button" data-start="load">Load Game</button>
+            <button class="text-button wide" type="button" data-start="exit">Exit</button>
+          </div>
+          <div id="welcomeOptionActions" class="welcome-actions hidden">
+            <button class="text-button wide" type="button" data-start="begin">Start Game</button>
+            <button class="text-button wide" type="button" data-start="back">Back</button>
+          </div>
+          <p class="welcome-line">Rest for the Irreligious.</p>
+          <div id="welcomeLoadList" class="welcome-load-list"></div>
+        </div>
+      </section>
+
+      <section id="blockingOverlay" class="modal-overlay hidden" aria-live="assertive" aria-modal="true">
+        <div id="blockingModal" class="modal-box">
+          <div id="blockingMessage" class="modal-message"></div>
+        </div>
+      </section>
+
+      <header class="top-bar">
+        <div id="topBrand" class="brand">Assurance_Command_Session_0.31.wt</div>
+        <div id="topStatus" class="top-status">DAY -- | PAUSED</div>
+      </header>
+
+      <section class="dashboard">
+        <aside class="panel left-panel">
+          <div class="panel-title">STATUS</div>
+          <div id="leftPanel" class="panel-content"></div>
+        </aside>
+
+        <section class="panel center-panel">
+          <div id="centerTitle" class="panel-title">MAP</div>
+          <div id="centerContent" class="center-content">
+            <div id="mapFrame" class="map-frame">
+              <canvas id="hexMapCanvas" aria-label="Hex war map"></canvas>
+              <div id="mapUnitSelector" class="map-unit-selector"></div>
+              <div id="mapSelection" class="map-selection"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel right-panel">
+          <div class="panel-title">COMMANDS</div>
+          <div id="rightPanel" class="panel-content"></div>
+        </aside>
+      </section>
+
+      <footer class="bottom-bar">
+        <div id="eventLog" class="event-log"></div>
+      </footer>
+
+      <button id="endTurnButton" class="end-turn-button" type="button">END TURN</button>
+    </main>
+
+    <script type="module" src="./renderer.ts"></script>
+  </body>
+</html>

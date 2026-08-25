@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Generated builds and packages
+dist/
+out/
+release/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+
+# Editor and operating-system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Local archives and legacy working notes
+/assurance_source.rar
+/assurance.txt
+/helptext.docx
+/macbuildcommands.txt
+/units.txt
+
+# Redundant generated asset copies (canonical files live in build/)
+/build/sound/*.txt
+/flash/icon.icns
+/flash/icon.ico
+/flash/icon_base64.txt
+/flash/icons/

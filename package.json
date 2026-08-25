@@ -1,0 +1,90 @@
+{
+  "name": "assurance",
+  "version": "0.31.0",
+  "description": "Turn-based hex-grid strategy game built with Electron and TypeScript",
+  "homepage": "https://atritheone.com/assurance",
+  "author": {
+    "name": "slayer",
+    "email": "edward@atritheone.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "tsc --noEmit && electron-vite build",
+    "dist:win": "npm run build && electron-builder --win portable",
+    "dist:linux": "npm run build && electron-builder --linux deb",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip",
+    "prepare:linux-vm": "node scripts/prepare-linux-vm-build.mjs",
+    "prepare:mac-vm": "node scripts/prepare-mac-vm-build.mjs",
+    "test": "node scripts/run-ts-tests.mjs",
+    "check:ai": "node scripts/check-ai-behavior.mjs",
+    "build:standalone": "npm run build && node scripts/build-standalone.mjs",
+    "preview": "electron-vite preview"
+  },
+  "build": {
+    "appId": "com.slayer.assurance",
+    "productName": "Assurance",
+    "asar": true,
+    "afterPack": "scripts/after-pack.cjs",
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "maintainer": "slayer <edward@atritheone.com>",
+      "category": "Game",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.games",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "portable": {
+      "artifactName": "Assurance-0.31-portable.${ext}"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "electron": "^31.2.0",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "rcedit": "^5.0.2",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4"
+  }
+}
