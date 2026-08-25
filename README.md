@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="flash/assurance_logo.png" alt="Assurance logo" width="520" />
+  <img src="flash/assurance_logo.png" alt="Assurance logo" width="300" />
 </p>
 
 <h1 align="center">Assurance</h1>
